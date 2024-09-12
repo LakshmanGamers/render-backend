@@ -40,7 +40,13 @@ db.connect()
 // Middleware setup
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(cors());
+const corsOptions = {
+  origin: 'http://localhost:5173/',  // Replace with your allowed origin
+  credentials: true              // Enable credentials (cookies, headers)
+};
+
+// Use the CORS middleware with options
+app.use(cors(corsOptions));
 
 // Initialize session
 app.use(session({
