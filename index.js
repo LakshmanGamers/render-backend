@@ -6,7 +6,7 @@ import pg from 'pg'; // Import Client from 'pg'
 import bcrypt from 'bcrypt'; // For hashing passwords
 import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
-import session from 'express-session'; // Import express-session
+import session from 'cookie-session'; // Import express-session
 
 dotenv.config(); // Initialize environment variables
 
@@ -55,7 +55,7 @@ app.use(session({
   saveUninitialized: false,
   cookie: {  
     maxAge: 24 * 60 * 60 * 1000, // Cookie valid for 24 hours
-  secure: true } // Set to true in production with HTTPS
+  secure: false } // Set to true in production with HTTPS
 }));
 
 app.use(passport.initialize());
