@@ -192,11 +192,11 @@ app.listen(port, () => {
 app.get("/getdata",async (req,res)=>{
   console.log(req.isAuthenticated())
   try{
-    if (req.isAuthenticated()) {
+   
     const userId = req.query.userId;
     const resp = await db.query("SELECT t.id, t.heading, t.description, t.duedate, t.priority, t.uid, p.name AS project, t.completed FROM tasks t JOIN projects p ON t.project_id = p.id WHERE t.uid = $1" ,[ userId]);
     return res.json({taskdata : resp.rows} );
-    }
+  
   }
   catch(err){
     console.error(err);
