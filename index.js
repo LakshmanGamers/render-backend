@@ -40,13 +40,13 @@ db.connect()
 // Middleware setup
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-const corsOptions = {
-  origin: 'https://task-master1.onrender.com',  // Replace with your allowed origin
-  credentials: true              // Enable credentials (cookies, headers)
-};
+// const corsOptions = {
+//   origin: 'https://task-master1.onrender.com',  // Replace with your allowed origin
+//   credentials: true              // Enable credentials (cookies, headers)
+// };
 
 // Use the CORS middleware with options
-app.use(cors(corsOptions));
+app.use(cors());
 
 // Initialize session
 app.use(session({
