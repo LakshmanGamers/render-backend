@@ -6,7 +6,7 @@ import pg from 'pg'; // Import Client from 'pg'
 import bcrypt from 'bcrypt'; // For hashing passwords
 import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
-import session from 'cookie-session'; // Import express-session
+import session from 'express-session'; // Import express-session
 
 dotenv.config(); // Initialize environment variables
 
@@ -41,7 +41,7 @@ db.connect()
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 const corsOptions = {
-  origin: 'http://localhost:5173/',  // Replace with your allowed origin
+  origin: 'https://task-master1.vercel.app/',  // Replace with your allowed origin
   credentials: true              // Enable credentials (cookies, headers)
 };
 
