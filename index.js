@@ -225,16 +225,14 @@ app.post("/addProject",async (req,res)=>{
 
 app.get("/getProjects",async (req,res)=>{
   try{
-    if(req.isAuthenticated()){
+    
     const userId = req.query.userId;
     console.log("sdasd"+userId);
     const resp = await db.query("SELECT id, name FROM projects WHERE uid = $1" ,[ userId]);
     console.log(JSON.stringify(resp.rows));
     return res.json({projects : resp.rows} );
-  }
-  else{
-    res.status(404).json({error : "Unuthenticated"})
-  }
+  
+ 
 }
   catch(err){
     console.error(err);
