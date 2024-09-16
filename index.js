@@ -41,7 +41,7 @@ db.connect()
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 const corsOptions = {
-  origin: 'https://task-master1.vercel.app/',  // Replace with your allowed origin
+  origin: 'https://task-master1.onrender.com',  // Replace with your allowed origin
   credentials: true              // Enable credentials (cookies, headers)
 };
 
