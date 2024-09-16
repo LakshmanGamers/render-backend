@@ -69,7 +69,7 @@ app.use(session({
   saveUninitialized: false,
   cookie: {  
     maxAge: 24 * 60 * 60 * 1000, // Cookie valid for 24 hours
-  secure: true } // Set to true in production with HTTPS
+  secure: false } // Set to true in production with HTTPS
 }));
 
 app.use(passport.initialize());
