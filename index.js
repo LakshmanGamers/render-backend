@@ -106,6 +106,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/signup", async (req, res) => {
+  console.log("came here in signup");
   const { email, password, name } = req.body;
 
   try {
