@@ -46,7 +46,21 @@ app.use(bodyParser.json());
 // };
 
 // Use the CORS middleware with options
-app.use(cors());
+const allowedOrigins = ['http://localhost:5173', 'https://task-master-app-xkeo.onrender.com','https://effortless-naiad-22f798.netlify.app'];
+
+const corsOptions = {
+  origin: (origin, callback) => {
+    // If no origin (like for some requests such as mobile apps) or origin is in allowedOrigins
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,  // Allow credentials (cookies, authorization headers)
+};
+
+app.use(cors(corsOptions));
 
 // Initialize session
 app.use(session({
