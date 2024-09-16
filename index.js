@@ -65,7 +65,7 @@ app.use(cors(corsOptions));
 // Initialize session
 app.use(session({
   secret: process.env.SESSION_SECRET || 'your-secret-key', // Use a secure secret
-  resave: false,
+  resave : true,
   saveUninitialized: false,
   cookie: {  
     maxAge: 24 * 60 * 60 * 1000, // Cookie valid for 24 hours
