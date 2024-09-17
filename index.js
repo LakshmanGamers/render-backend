@@ -46,7 +46,7 @@ app.use(bodyParser.json());
 // };
 
 // Use the CORS middleware with options
-const allowedOrigins = ['http://localhost:5173', 'https://task-master-app-xkeo.onrender.com','https://effortless-naiad-22f798.netlify.app'];
+const allowedOrigins = ['http://localhost:5173', 'https://task-master-app-xkeo.onrender.com','https://effortless-naiad-22f798.netlify.app','https://task-master-app-24w9.onrender.com'];
 
 const corsOptions = {
   origin: (origin, callback) => {
