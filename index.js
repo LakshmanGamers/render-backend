@@ -268,12 +268,12 @@ app.put("/task/:id", async(req,res)=>{
 const id = req.params.id;
 
 
-const { heading , description  , dueDate , priority  , completed , userId , project} = req.body;
+const { heading , description  , duedate , priority  , completed , userId , project} = req.body;
 
 
 const resp = await db.query("select id from projects where name=$1",[project]);
 const projectId = resp.rows[0].id;
-const values = [heading , description  , dueDate , priority  , completed , userId , projectId ,id];
+const values = [heading , description  , duedate , priority  , completed , userId , projectId ,id];
 const output = await db.query('UPDATE tasks set heading = $1, description = $2, duedate = $3  , priority = $4, completed = $5 , uid = $6, project_id = $7 where id =$8',values);
 return res.status(200).json({"message": "Edit Successfully" , "error" : "" });
   }
