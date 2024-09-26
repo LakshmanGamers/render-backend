@@ -37,13 +37,13 @@ export async function createHomeBoard(name , userId){
         console.log(obj)
           const board = new Board(obj);
           const savedboard = await board.save();
-      
-          return res.json(savedboard);
+      console.log(savedboard);
+        
         }
         catch(err){
             console.error(err);
         
-          res.status(400).json({error:err.message});
+          
         }
       
       
