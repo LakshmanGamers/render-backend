@@ -7,11 +7,27 @@ import bcrypt from 'bcrypt'; // For hashing passwords
 import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
 import session from 'express-session'; // Import express-session
+import mongoose  from 'mongoose';
+import UserModel from './models/UserModel.js';
+import  {fetch ,create , updateCol , addBoard}  from './controllers/UserController.js';
+import { addTask  } from './controllers/TaskController.js';
+import { updateBoard } from './controllers/BoardController.js';
+import { createHomeBoard } from './controllers/TaskController.js';
+
+
 
 dotenv.config(); // Initialize environment variables
 
 const app = express();
 const port = 3000;
+const MONGO_URL = process.env.MONGO_URL ;
+
+mongoose.connect(MONGO_URL).then(()=>{
+  console.log('Connected to MongoDB');
+}).catch((err)=>{
+  console.log('Error connecting');
+});
+
 
 // Initialize PostgreSQL client
 // const db = new pg.Client({
@@ -137,6 +153,7 @@ app.post("/signup", async (req, res) => {
     const values = [name, email, hashedPassword];
 
     const resp = await db.query(query, values);
+    const mongoresp = await createHomeBoard('Home',newUser.id)
     console.log(resp);
     const newUser = resp.rows[0];
     
@@ -305,3 +322,14 @@ return res.status(200).json({"message": "Deleted Successfully" , "error" : "" })
 
 
 })
+
+
+
+app.get('/getUsers/:id', fetch)
+app.post("/createUser", create)
+
+app.post('/addBoard', addBoard)
+app.get("/update",updateCol);
+
+app.post('/addTask',addTask);
+app.post('/updateBoard', updateBoard)
