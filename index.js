@@ -153,10 +153,11 @@ app.post("/signup", async (req, res) => {
     const values = [name, email, hashedPassword];
 
     const resp = await db.query(query, values);
-    const mongoresp = await createHomeBoard('Home',newUser.id)
     console.log(resp);
     const newUser = resp.rows[0];
     
+    const mongoresp = await createHomeBoard('Home',newUser.id)
+    console.log(mongoresp);
     await db.query('INSERT INTO projects(name, uid) VALUES($1, $2)', ["Inbox", newUser.id]);
 
     req.login(newUser, (err) => {
