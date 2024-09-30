@@ -7,7 +7,9 @@ async function fetch(req,res){
 try{
     const uId = req.params.id;
     const result =  await Board.find({userId : uId});
-    res.json(result);
+    const homeId = await Board.findOne({ name : "Home" , userId : uId});
+
+    res.json({data : result , homeId : homeId._id });
 }
 catch(err){
     res.status(500).json({error:err.message});
